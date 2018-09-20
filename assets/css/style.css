@@ -1,0 +1,23 @@
+body{
+    background-image: url("../images/Tombstone-Val-Kilmer.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+}
+#gameName {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+
+}
+
+
+#general{
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 30px;
+    color: white;
+
+}
