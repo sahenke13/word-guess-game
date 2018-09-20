@@ -26,6 +26,7 @@ var realAnswer = [""];
 var gamesWon = 0;
 
 
+
 //create a randomWord with function 
 function randomizer (){
 randomWord = wordBank[Math.floor(Math.random() * wordBank.length)];
@@ -66,8 +67,10 @@ function reset(){
 }
 
 //Run Generate Hidden Word Function
-randomizer();
-generateHiddenWord(randomWord);
+// randomizer();
+// generateHiddenWord(randomWord);
+
+reset();
 //Take Users Guess
 
 // JavaScript a function to execute when onkeyup event fires.
@@ -75,7 +78,9 @@ generateHiddenWord(randomWord);
 document.onkeyup = function(event){
     keyPressed = event.key;
     var correctGuess = false;
-   
+    
+  
+
     for (var i=0; i < randomWord.length; i++){
         if (randomWord[i] === keyPressed){
             hidenAnswer[i] = keyPressed;
@@ -95,6 +100,7 @@ document.onkeyup = function(event){
     }
     else {
         document.getElementById("outcome").innerHTML = "I'm your Huckleberry, try again!";
+        document.getElementById('audioLose').play();
         reset();
     }
 
@@ -104,6 +110,7 @@ document.onkeyup = function(event){
         gamesWon++;
         console.log("you win!!!");
         document.getElementById("victories").innerHTML = gamesWon;
+        document.getElementById('audioWin').play();
     }
    
     console.log(randomWord);
