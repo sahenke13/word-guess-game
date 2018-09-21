@@ -101,7 +101,7 @@ document.onkeyup = function(event){
         document.getElementById("outcome").innerHTML = "I'm your Huckleberry, try again!";
         document.getElementById('audioLose').play();
         gamesLost++;
-        reset(); 
+        reset();
     }
 
     if(realAnswer.toString()==hidenAnswer.toString()){
@@ -110,6 +110,7 @@ document.onkeyup = function(event){
         document.getElementById('audioWin').play();
         gamesWon++;
         reset();
+
     }
    
     wrongGuess = lettersGuessed.join(" ");
@@ -120,6 +121,7 @@ document.onkeyup = function(event){
     document.getElementById("wrongGuess").textContent = wrongGuess;
     document.getElementById("loses").textContent = gamesLost;
     document.getElementById("startPrompt").textContent = anyKey;
+    document.getElementById("victories").textContent = gamesWon;
 
 }
 
