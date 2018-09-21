@@ -10,19 +10,20 @@ body{
     margin-right: auto;
     margin-left: auto;
     color: black;
-    font-size: 30px;
+    font-size: 20pt;
 
 }
 
 
 #general{
     text-align: center;
+    margin-top: 10px;
     margin-right: auto;
     margin-left: auto;
-    padding: 30px;
+    padding: 20px;
     color: white;
-    font-size: 30pt;
-    width: 800px;
+    font-size: 15pt;
+    width: 100%;
     color: white;
     font-family: 'Oswald', sans-serif;
     
@@ -46,5 +47,8 @@ body{
     bottom: 8px;
     padding: 10px;
     width: 100%;
+}
+#mainContainer{
+    margin-top: 60px;
 }
 
