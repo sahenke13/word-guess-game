@@ -3,17 +3,15 @@
 
 
 //Bank of words to randomly pick from
-var wordBank = ["cur", "peach", "deputy", "law", "sheriff", "daisy", "huckleberry", "doc holiday", "wyatt earp", "ok corral", "buffalo bill", "billy the kid"];
+const wordBank = ["cur", "peach", "deputy", "law", "sheriff", "daisy", "huckleberry", "doc holiday", "wyatt earp", "ok corral", "buffalo bill", "billy the kid", "wells fargo", "apache", "butch cassidy", "the duke", "bronco", "covered wagon", "smith and wesson"];
 //initialize Playerwins to zero.  Keeps track of Wins.
 var playerWins = 0;
-//initialize remainingGuesses
-var startingGuesses = 5;
 //create empty array with letters that have been guessed
 var lettersGuessed= [];
 //Initialize an Empty Array with Answer
 var hidenAnswer = [];
-
-var remainingGuesses = 5;
+//initialize remainingGuesses
+var remainingGuesses = 6;
 
 var currentAnswer = [];
 
@@ -24,6 +22,10 @@ var randomWord = "";
 var realAnswer = [""];
 
 var gamesWon = 0;
+
+var gamesLost = 0;
+
+var anyKey = "";
 
 
 
@@ -46,40 +48,36 @@ function generateHiddenWord(foo){
             hidenAnswer[i] = " _ ";     
         }
     }
-    
     currentAnswer = hidenAnswer.join(" ");
-      
-    
     document.getElementById("answerCurrent").innerHTML = currentAnswer;
 }
 
 
-//try to create a reset function
+//create a reset game function
 function reset(){
-    realAnswer = [];
-    hidenAnswer=[];
+    wrongGuess = [""];
+    lettersGuessed = [""];
+    realAnswer = [""];
+    hidenAnswer=[""];
     generateHiddenWord(randomizer());
-    remainingGuesses = 5;
-    lettersGuessed = [];
-    startingGuesses = 5;
-    wrongGuess = [];
+    remainingGuesses = 6;
+    anyKey = "Press any Key to Start, the next game!"
     
 }
 
 //Run Generate Hidden Word Function
-// randomizer();
-// generateHiddenWord(randomWord);
+randomizer();
+generateHiddenWord(randomWord);
 
-reset();
-//Take Users Guess
+// reset();
+
 
 // JavaScript a function to execute when onkeyup event fires.
 
 document.onkeyup = function(event){
     keyPressed = event.key;
     var correctGuess = false;
-    
-  
+    anyKey = "You're a daisy if you do!!";
 
     for (var i=0; i < randomWord.length; i++){
         if (randomWord[i] === keyPressed){
@@ -91,36 +89,39 @@ document.onkeyup = function(event){
 
     //counter for remaining guesses
     if (correctGuess != true){
+
+        
         lettersGuessed.push(keyPressed);
         remainingGuesses--; 
     }
         
     if (remainingGuesses > 0){
-        document.getElementById("outcome").innerHTML = "Your a daisy if you do!";
+        document.getElementById("outcome").innerHTML = "You're a daisy if you do!";
     }
     else {
         document.getElementById("outcome").innerHTML = "I'm your Huckleberry, try again!";
         document.getElementById('audioLose').play();
+        gamesLost++;
         reset();
     }
 
     if(realAnswer.toString()==hidenAnswer.toString()){
         document.getElementById("outcome").innerHTML = "Great you Win!!!";
-        reset();
         gamesWon++;
-        console.log("you win!!!");
         document.getElementById("victories").innerHTML = gamesWon;
         document.getElementById('audioWin').play();
+        reset();
     }
    
-    console.log(randomWord);
-    console.log(hidenAnswer);
-    console.log(realAnswer);
-    wrongGuess = lettersGuessed.join("");
-    viewedAnswer = hidenAnswer.join("");
-    document.getElementById("guessCount").innerHTML = remainingGuesses;
+    wrongGuess = lettersGuessed.join(" ");
+    viewedAnswer = hidenAnswer.join(" ");
+
+    document.getElementById("guessCount").textContent = remainingGuesses;
     document.getElementById("answerCurrent").innerHTML = viewedAnswer;
-    document.getElementById("wrongGuess").innerHTML = wrongGuess;
+    document.getElementById("wrongGuess").textContent = wrongGuess;
+    document.getElementById("loses").textContent = gamesLost;
+    document.getElementById("startPrompt").textContent = anyKey;
+
 }
 
 

@@ -10,7 +10,7 @@ body{
     margin-right: auto;
     margin-left: auto;
     color: black;
-    font-size: 20px;
+    font-size: 30px;
 
 }
 
@@ -21,7 +21,13 @@ body{
     margin-left: auto;
     padding: 30px;
     color: white;
-
+    font-size: 30pt;
+    width: 800px;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    
+    /* text-shadow: 2px 2px 4px #000000; */
+    text-shadow: 1px 1px 2px black, 0 0 25px black, 0 0 5px black;
 }
 
 #mastHead{
@@ -32,3 +38,13 @@ body{
     margin: 5px 0px 5px 0px;
 
 }
+
+#footer{
+    position: absolute;
+    background: white;
+    text-align: center;
+    bottom: 8px;
+    padding: 10px;
+    width: 100%;
+}
+

@@ -10,12 +10,12 @@
 </head>
 <body>
     <nav id = "mastHead">
-        <header id = "gameName"><h1>Wild West Hangman</h1></header>
+        <header id = "gameName"><h1>Wild Wild West WordGuess</h1></header>
     </nav>
     <div id = "mainContainer">
-    <section>
+    <section id>
         <div id = "general">
-            Press any Key to Start.
+           <span id = "startPrompt">Press any Key to Start</span>
         </div>
         <div id = "general">
             <span id = "answerCurrent">Word Here</span>
@@ -24,7 +24,7 @@
             Letters Incorrectly Guessed: <span id = "wrongGuess">None</span>
         </div>
         <div id = "general">
-            Guesses Remaining: <span id = "guessCount">5</span>
+            Guesses Remaining: <span id = "guessCount">6</span>
         </div>
         <div id = "general">
              <span id = "outcome"> </span>
@@ -32,9 +32,15 @@
         <div id = "general">
             Games Won: <span id = "victories"> 0</span>
         </div>
+        <div id = "general">
+            Games Lost: <span id = "loses"> 0</span>
+        </div>
 
     </section>
     </div>
+    <footer id = "footer"><p>a game by twin city coding craft &copy;</p></footer>
+
+
     <audio id = "audioWin" src = "assets/sounds/Isnt that a daisy.mp3"></audio>
     <audio id = "audioLose" src ="assets/sounds/Im your huckleberry.mp3"></audio>
     <audio id = "audioStart" src ="assets/sounds/Two guns.mp3"></audio>
