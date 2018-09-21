@@ -7,7 +7,7 @@ const wordBank = ["cur", "peach", "deputy", "law", "sheriff", "daisy", "hucklebe
 //initialize Playerwins to zero.  Keeps track of Wins.
 var playerWins = 0;
 //create empty array with letters that have been guessed
-var lettersGuessed= [];
+var lettersGuessed= [" "];
 //Initialize an Empty Array with Answer
 var hidenAnswer = [];
 //initialize remainingGuesses
@@ -39,7 +39,7 @@ return randomWord;
 function generateHiddenWord(foo){
 // Using a for loop to incorporate incorporate spaces
     for (var i=0; i < foo.length; i++){
-        if(randomWord.charAt(i) == " "){
+        if(foo.charAt(i) == " "){
             realAnswer[i] = "&nbsp;";
             hidenAnswer[i]= "&nbsp;";
         }
@@ -55,15 +55,16 @@ function generateHiddenWord(foo){
 
 //create a reset game function
 function reset(){
+    
+    realAnswer = [""]
     wrongGuess = [""];
     lettersGuessed = [""];
-    realAnswer = [""];
     hidenAnswer=[""];
-    generateHiddenWord(randomizer());
     remainingGuesses = 6;
     anyKey = "Press any Key to Start, the next game!"
-    
-}
+    generateHiddenWord(randomizer())
+}   
+
 
 //Run Generate Hidden Word Function
 randomizer();
@@ -79,7 +80,7 @@ document.onkeyup = function(event){
     var correctGuess = false;
     anyKey = "You're a daisy if you do!!";
 
-    for (var i=0; i < randomWord.length; i++){
+    for (let i=0; i < randomWord.length; i++){
         if (randomWord[i] === keyPressed){
             hidenAnswer[i] = keyPressed;
             correctGuess = true;  
@@ -88,10 +89,9 @@ document.onkeyup = function(event){
     }
 
     //counter for remaining guesses
-    if (correctGuess != true){
-
-        lettersGuessed.push(keyPressed);
-        remainingGuesses--; 
+    if (correctGuess != true && lettersGuessed.includes(keyPressed) != true){
+            lettersGuessed.push(keyPressed);
+            remainingGuesses--; 
     }
         
     if (remainingGuesses > 0){
@@ -101,14 +101,14 @@ document.onkeyup = function(event){
         document.getElementById("outcome").innerHTML = "I'm your Huckleberry, try again!";
         document.getElementById('audioLose').play();
         gamesLost++;
-        reset();
+        reset(); 
     }
 
     if(realAnswer.toString()==hidenAnswer.toString()){
         document.getElementById("outcome").innerHTML = "Great you Win!!!";
-        gamesWon++;
         document.getElementById("victories").innerHTML = gamesWon;
         document.getElementById('audioWin').play();
+        gamesWon++;
         reset();
     }
    
