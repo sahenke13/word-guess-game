@@ -90,7 +90,6 @@ document.onkeyup = function(event){
     //counter for remaining guesses
     if (correctGuess != true){
 
-        
         lettersGuessed.push(keyPressed);
         remainingGuesses--; 
     }
